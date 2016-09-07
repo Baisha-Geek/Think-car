@@ -108,6 +108,7 @@ int sum(int x[],int a)//x为数据组，a为数组长度，求数组和
 //下面这个函数计算两个数组的相关系数并作为返回值返回，介于1和-1之间。1为完全正相关，0为不相关，-1为完全负相关，
 //T1是样本数组，T2是接收到的数据组
 
+/*
 double pearson(unsigned int T1[],unsigned int T2[],int a) //a为数组长度
 {
       unsigned int xhe = sum(T1,a);
@@ -223,3 +224,4 @@ void naoKongzhi()
   }
 }
 
+*/

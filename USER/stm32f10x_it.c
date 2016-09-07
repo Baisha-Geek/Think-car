@@ -159,6 +159,17 @@ void SysTick_Handler(void)
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
 
+void USART2_IRQHandler()
+{
+     if(USART_GetITStatus(USART2,USART_IT_RXNE) != RESET) //中断产生
+     {
+         USART_ClearITPendingBit(USART2,USART_IT_RXNE); //清除中断标志
+         u8 x = USART_ReceiveData(USART2);                 
+         USART_SendData(USART2,x);
+     }
+}
+
+/*
 extern u8 Uart2_data[];//存放不断传输过来的数据
 extern u8 Uart2_Buffer[];//存放小包数据
 extern unsigned int Uart2_Rx, Uart2_Tx, Uart2_Len, Uart2_Sta, tx2;
@@ -177,7 +188,7 @@ void USART2_IRQHandler()
      if(Uart2_data[Uart2_Tx + 2] != 0x20)//这一句检测是大包还是小包
      {
        //下面这段暂时不用，本来打算判断是否丢包，结果发现好像不用
-/*         if(Uart2_Rx == 5)
+       if(Uart2_Rx == 5)
          {
             //
              if((Uart2_data[0] != 0xAA) || (Uart2_data[1] != 0xAA) || (Uart2_data[2] != 0x04) || (Uart2_data[3] != 0x80) || (Uart2_data[4] != 0x02))
@@ -187,7 +198,7 @@ void USART2_IRQHandler()
                 Uart2_Sta = 0;         
              }
          }
-*/
+
          if((Uart2_data[Uart2_Tx] == 0xAA) && (Uart2_Rx == 8));  //   检测到头的情况下检测到尾
          {
              Uart2_Sta=1; //标志位
@@ -240,4 +251,4 @@ void USART2_IRQHandler()
     }
 }
 
-
+*/
